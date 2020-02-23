@@ -62,11 +62,10 @@ public class UI
 		
 		private JLabel labelCantidadDiscos;
 		private JTextField campoCantidadDiscos;
+		private boolean esLaPrimeraVez = true;
 		
-		private int x = 0;
-        private int y = 0;
-
-        public Panel() {
+        @SuppressWarnings("deprecation")
+		public Panel() {
         	jugador = new Jugador();
         			
         	labelCantidadDiscos = new JLabel("Cantidad de discos", SwingConstants.LEFT);
@@ -85,13 +84,31 @@ public class UI
     		botonIniciar.setBounds(10, 267, 89, 23);
     		botonIniciar.addActionListener(new ActionListener() {
     			public void actionPerformed(ActionEvent e) {
-    		        jugador.calculoTorre(Integer.parseInt(campoCantidadDiscos.getText()), 0);
+    				esLaPrimeraVez = false;
+    				
+    				if (!jugador.isEstaJugando()) {
+    					botonIniciar.disable();
+    					botonIniciar.setText("Jugando ...");
+        				class HiloDelJugador extends Thread{
+        					
+        					@Override
+        					public void run() {
+        						jugador.calculoTorre(Integer.parseInt(campoCantidadDiscos.getText()), 0);
+        					}
+        				}
+        				
+        				HiloDelJugador hiloDelJugador = new HiloDelJugador();
+        				hiloDelJugador.start();
+    				} else {
+    					System.out.println("Esta jugando ...");
+    				}
     			}
     		});
     		
+    		
+    		
             Timer timer = new Timer(40, new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    moveBall();
                     repaint();
                 }
             });
@@ -102,11 +119,6 @@ public class UI
             this.add(botonIniciar);
         }
 
-        protected void moveBall() {
-            x++;
-            y++;
-        }
-
         @Override
         public Dimension getPreferredSize() {
             return new Dimension(800, 500);
@@ -115,10 +127,81 @@ public class UI
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D) g.create();
-            g2d.setColor(Color.RED);
-            g2d.fillOval(x, y, 30, 30);
-            g2d.dispose();
+            
+            if (!jugador.isEstaJugando()) {
+            	botonIniciar.setText("Iniciar");
+            	botonIniciar.enable();
+            }
+            
+            Graphics2D torre1 = (Graphics2D) g.create();
+            torre1.setColor(Color.BLUE);
+            torre1.fillRect(150, 200, 20, 200);
+            torre1.dispose();
+            
+            Graphics2D torre2 = (Graphics2D) g.create();
+            torre2.setColor(Color.BLUE);
+            torre2.fillRect(350, 200, 20, 200);
+            torre2.dispose();
+            
+            Graphics2D torre3 = (Graphics2D) g.create();
+            torre3.setColor(Color.BLUE);
+            torre3.fillRect(550, 200, 20, 200);
+            torre3.dispose();
+            
+            int x = 110;
+            int y = 380;
+
+            Graphics2D disco1 = (Graphics2D) g.create();
+            disco1.setColor(Color.ORANGE);
+            
+            Graphics2D disco2 = (Graphics2D) g.create();
+            disco2.setColor(Color.GREEN);
+            
+            Graphics2D disco3 = (Graphics2D) g.create();
+            disco3.setColor(Color.GRAY);
+            
+            Graphics2D disco4 = (Graphics2D) g.create();
+            disco4.setColor(Color.RED);
+            
+            Graphics2D disco5 = (Graphics2D) g.create();
+            disco5.setColor(Color.CYAN);
+            
+            if (esLaPrimeraVez) {
+                disco1.fillRect(x, 300, 50, 20);
+                disco2.fillRect(x, 320, 70, 20);
+                disco3.fillRect(x, 340, 90, 20);
+                disco4.fillRect(x, 360, 110, 20);
+                disco5.fillRect(x, 380, 130, 20);
+            }
+            
+            // Pintar discos
+            for (Varilla varilla: jugador.getMisVarillas()) {
+            	if (varilla.getIdVarilla() == 0) {
+            		x = 110;
+            	} else if (varilla.getIdVarilla() == 1) {
+            		x = 310;
+            	} else if (varilla.getIdVarilla() == 2) {
+            		x = 510;
+            	}
+            	y = 380;
+            	for(Disco disco: varilla.getLosDiscos()) {
+            		
+            		if (disco.getNumeroDisco() == 0) {
+            			disco1.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            		}else if (disco.getNumeroDisco() == 1) {
+            			disco2.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            		} else if (disco.getNumeroDisco() == 2) {
+            			disco3.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            		} else if (disco.getNumeroDisco() == 3) {
+            			disco4.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            		} else if (disco.getNumeroDisco() == 4) {
+            			disco5.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            		} 
+                    
+                    y -= 20;
+            	}
+            }
+            
         }
 
     }

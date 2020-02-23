@@ -20,7 +20,7 @@ public class Varilla extends Discos{
 	public void verRegistroVarilla() {
 		System.out.println("---------------------------------");
 		System.out.println("Varilla = "+getIdVarilla());
-		this.verDiscosRegristro();
+		this.verDiscosRegristro(0);
 		System.out.println("---------------------------------");
 	}
 	

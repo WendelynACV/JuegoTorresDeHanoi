@@ -12,21 +12,31 @@ public class Disco {
 	
 	public boolean seDebeMover(int movimientoActual) {
 		
-		if((idDisco == 0) && (ultimoMovimiento+2 == movimientoActual)) {
+		if((idDisco == 0) && (ultimoMovimiento + 2 == movimientoActual)) {
 			return true;
-		}else if((idDisco == 1) && (ultimoMovimiento+4 == movimientoActual)) {
+		}else if((idDisco == 1) && (ultimoMovimiento + 4 == movimientoActual)) {
 			return true;
-		}else if((idDisco == 2) && (ultimoMovimiento+8 == movimientoActual)) {
+		}else if((idDisco == 2) && (ultimoMovimiento + 8 == movimientoActual)) {
 			return true;
-		}else if((idDisco == 3) && (ultimoMovimiento+16 == movimientoActual)) {
+		}else if((idDisco == 3) && (ultimoMovimiento + 16 == movimientoActual)) {
 			return true;
-		}else if((idDisco == 4) && (ultimoMovimiento+32 == movimientoActual)) {
+		}else if((idDisco == 4) && (ultimoMovimiento + 32 == movimientoActual)) {
 			return true;
-		}	else if((idDisco == 5) && (ultimoMovimiento+64 == movimientoActual)) {
+		}	else if((idDisco == 5) && (ultimoMovimiento + 64 == movimientoActual)) {
 			return true;
 		}
 		
 		return false;
+	}
+	
+	public int obtenerLargoDelDisco() {
+		int base = 50;
+		int constanteIncremento = 20;
+		if(idDisco == 0) {
+			return base;
+		} else {
+			return base + (idDisco * constanteIncremento);
+		}
 	}
 	
 	//Getter y setter

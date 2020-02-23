@@ -16,15 +16,17 @@ public class Discos {
 		losDiscos.push(disco);
 	}
 	
-	public Stack<Disco> verDiscosRegristro() {
-		
-		for (Disco disco: losDiscos) {
-			System.out.println("Disco = "+disco.getNumeroDisco());
+	public void verDiscosRegristro(int contador) {
+		if (contador < losDiscos.size() ) {
+			System.out.println("Disco = "+losDiscos.get(contador).getNumeroDisco());	
+			verDiscosRegristro(contador += 1);
 		}
-		
-		return losDiscos;
-		
 	}
+	
+	public Stack<Disco> obtenerDiscos(){
+		return losDiscos;
+	}
+	
 	public Disco obtenerDisco() {
 		if (losDiscos.empty()) {
 			return null;

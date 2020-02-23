@@ -9,7 +9,8 @@ public class Jugador {
 	private List<Integer> secuenciaVarillaDiscosPares;
 	private List<Integer> secuenciaVarillaDiscosImpares;
 	private Varilla varillaEnMovimiento;
-	
+	private boolean estaJugando = false;
+
 	public Jugador () {
 		inicializar();
 	}
@@ -103,13 +104,14 @@ public class Jugador {
 	}
 	
 	public void calculoTorre(int cantidadDeDiscos, int numeroDeTurnoActual) {
-		
+		estaJugando = true;
 		if (numeroDeTurnoActual == 0) {
 			inicializar();
 			misVarillas.get(0).llenarDiscos(cantidadDeDiscos - 1);
 		}
 		
 		if(misVarillas.get(2).getLosDiscos().size() == cantidadDeDiscos) {
+			estaJugando = false;
 			return;
 		} else {
 			Disco discoAMover;
@@ -135,8 +137,22 @@ public class Jugador {
 			System.out.println("Numero de movimiento: "+numeroDeTurnoActual+" ..................");
 			imprimirEstadoDeLasVarrilas(0);
 			System.out.println("........................................");
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			calculoTorre(cantidadDeDiscos, numeroDeTurnoActual += 1);
 		}
 	}
 
+	public List<Varilla> getMisVarillas() {
+		return misVarillas;
+	}
+
+	public boolean isEstaJugando() {
+		return estaJugando;
+	}
+	
 }
