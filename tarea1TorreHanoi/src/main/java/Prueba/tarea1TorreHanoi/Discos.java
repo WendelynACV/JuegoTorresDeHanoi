@@ -1,6 +1,5 @@
 package Prueba.tarea1TorreHanoi;
 
-import java.util.List;
 import java.util.Stack;
 
 public class Discos {
@@ -12,11 +11,6 @@ public class Discos {
 		losDiscos = new Stack<Disco>();
 	}
 	
-	/*public void registrarNumeroDisco() {
-		
-		Disco disco= new Disco(numeroDisco);
-		losDiscos.add(disco);
-	}*/
 	public void registrarDisco(Disco disco) {
 		
 		losDiscos.push(disco);
@@ -35,6 +29,7 @@ public class Discos {
 		return losDiscos.pop();
 		
 	}
+	
 	public Disco verUltimoDisco() {
 		
 		return losDiscos.peek();

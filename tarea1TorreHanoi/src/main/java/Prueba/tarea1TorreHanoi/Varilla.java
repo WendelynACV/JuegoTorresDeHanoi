@@ -2,23 +2,15 @@ package Prueba.tarea1TorreHanoi;
 
 public class Varilla extends Discos{
 	
-	private String nombreVarilla = "";
+	private int idVarilla = 0;
 	
-	
-	public Varilla (String nombreVarilla) {
+	public Varilla (int idVarilla) {
 		
-		this.nombreVarilla = nombreVarilla;
+		this.idVarilla = idVarilla;
 		
 	}
 	public void llenarDiscos(int cantidadDiscos) {
-		/*int n= cantidadDiscos;
-		for (int i=0; i <= cantidadDiscos-1; i ++) {
-			
-			Disco disco = new Disco(n);
-			this.registrarDisco(disco);
-			n --;
-			
-		}*/
+		
 		if (cantidadDiscos > 0) {
 			Disco disco = new Disco(cantidadDiscos);
 			this.registrarDisco(disco);
@@ -31,12 +23,12 @@ public class Varilla extends Discos{
 	
 	//Getter y setter
 
-	public String getNombreVarilla() {
-		return nombreVarilla;
+	public int getIdVarilla() {
+		return idVarilla;
 	}
 
-	public void setNombreVarilla(String nombreVarilla) {
-		this.nombreVarilla = nombreVarilla;
+	public void setIdVarilla(int idVarilla) {
+		this.idVarilla = idVarilla;
 	}
 	
 
