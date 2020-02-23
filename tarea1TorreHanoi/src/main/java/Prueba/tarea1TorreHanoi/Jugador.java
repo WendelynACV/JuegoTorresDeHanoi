@@ -9,10 +9,12 @@ public class Jugador {
 	private List<Integer> secuenciaVarillaDiscosPares;
 	private List<Integer> secuenciaVarillaDiscosImpares;
 	private Varilla varillaEnMovimiento;
-	private int cantidadDeDiscos;
 	
-	public Jugador (int cantidadDeDiscos) {
+	public Jugador () {
+		inicializar();
+	}
 	
+	public void inicializar() {
 		misVarillas = new ArrayList<Varilla>();
 		misVarillas.add(new Varilla(0));
 		misVarillas.add(new Varilla(1));
@@ -28,8 +30,6 @@ public class Jugador {
 		secuenciaVarillaDiscosImpares.add(2);
 		secuenciaVarillaDiscosImpares.add(1);
 		
-		this.cantidadDeDiscos = cantidadDeDiscos;
-		misVarillas.get(0).llenarDiscos(cantidadDeDiscos - 1);
 		varillaEnMovimiento = null;
 	}
 	
@@ -102,7 +102,12 @@ public class Jugador {
 		}
 	}
 	
-	public void calculoTorre(int numeroDeTurnoActual) {
+	public void calculoTorre(int cantidadDeDiscos, int numeroDeTurnoActual) {
+		
+		if (numeroDeTurnoActual == 0) {
+			inicializar();
+			misVarillas.get(0).llenarDiscos(cantidadDeDiscos - 1);
+		}
 		
 		if(misVarillas.get(2).getLosDiscos().size() == cantidadDeDiscos) {
 			return;
@@ -130,7 +135,7 @@ public class Jugador {
 			System.out.println("Numero de movimiento: "+numeroDeTurnoActual+" ..................");
 			imprimirEstadoDeLasVarrilas(0);
 			System.out.println("........................................");
-			calculoTorre(numeroDeTurnoActual += 1);
+			calculoTorre(cantidadDeDiscos, numeroDeTurnoActual += 1);
 		}
 	}
 

@@ -33,5 +33,5 @@ public class Varilla extends Discos{
 	public void setIdVarilla(int idVarilla) {
 		this.idVarilla = idVarilla;
 	}
-	
+
 }
