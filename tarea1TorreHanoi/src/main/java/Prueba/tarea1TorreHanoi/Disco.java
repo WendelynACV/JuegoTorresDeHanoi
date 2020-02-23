@@ -6,35 +6,29 @@ public class Disco {
 	private int ultimoMovimiento = 0;
 	
 	public Disco(int numeroDisco) {
-		
 		this.idDisco= numeroDisco;
 		this.ultimoMovimiento = 0;
-		System.out.println(numeroDisco);
 	}
+	
 	public boolean seDebeMover(int movimientoActual) {
 		
-		if((idDisco == 1) && (ultimoMovimiento+2 == movimientoActual)) {
+		if((idDisco == 0) && (ultimoMovimiento+2 == movimientoActual)) {
 			return true;
-			
-		}else if((idDisco == 2) && (ultimoMovimiento+4 == movimientoActual)) {
+		}else if((idDisco == 1) && (ultimoMovimiento+4 == movimientoActual)) {
 			return true;
-			
-		}else if((idDisco == 3) && (ultimoMovimiento+8 == movimientoActual)) {
+		}else if((idDisco == 2) && (ultimoMovimiento+8 == movimientoActual)) {
 			return true;
-			
-		}else if((idDisco == 4) && (ultimoMovimiento+16 == movimientoActual)) {
+		}else if((idDisco == 3) && (ultimoMovimiento+16 == movimientoActual)) {
 			return true;
-			
-		}else if((idDisco == 5) && (ultimoMovimiento+32 == movimientoActual)) {
+		}else if((idDisco == 4) && (ultimoMovimiento+32 == movimientoActual)) {
 			return true;
-			
-		}	else if((idDisco == 6) && (ultimoMovimiento+64 == movimientoActual)) {
+		}	else if((idDisco == 5) && (ultimoMovimiento+64 == movimientoActual)) {
 			return true;
-			
-		}				
+		}
 		
 		return false;
 	}
+	
 	//Getter y setter
 
 	public int getUltimoMovimiento() {
@@ -53,6 +47,4 @@ public class Disco {
 		this.idDisco = numeroDisco;
 	}
 	
-	
-
 }

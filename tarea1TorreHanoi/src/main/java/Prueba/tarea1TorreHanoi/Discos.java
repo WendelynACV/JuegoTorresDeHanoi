@@ -19,21 +19,26 @@ public class Discos {
 	public Stack<Disco> verDiscosRegristro() {
 		
 		for (Disco disco: losDiscos) {
-			System.out.print(disco.getNumeroDisco()+"\n");
+			System.out.println("Disco = "+disco.getNumeroDisco());
 		}
+		
 		return losDiscos;
 		
 	}
 	public Disco obtenerDisco() {
-		
+		if (losDiscos.empty()) {
+			return null;
+		}
 		return losDiscos.pop();
-		
 	}
 	
 	public Disco verUltimoDisco() {
-		
+		if (losDiscos.empty()) {
+			return null;
+		}
 		return losDiscos.peek();
 	}
+	
 	//Getter y setter
 
 	public Stack<Disco> getLosDiscos() {
@@ -44,5 +49,4 @@ public class Discos {
 		this.losDiscos = losDiscos;
 	}
 	
-
 }
