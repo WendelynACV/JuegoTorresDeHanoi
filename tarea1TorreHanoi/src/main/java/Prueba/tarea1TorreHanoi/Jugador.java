@@ -2,6 +2,7 @@ package Prueba.tarea1TorreHanoi;
 
 import java.util.ArrayList;
 import java.util.List;
+//En Jugador se realizan la mayoría de los cálculos o procesos para resolver la torre.
 
 public class Jugador {
 	

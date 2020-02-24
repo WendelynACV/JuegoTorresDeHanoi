@@ -20,11 +20,15 @@ import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+//Wendelyn Cordero Vargas 113790470
+//Estructura de Datos
+//Profesora: Miriam Mora Morales
+//Grupo B
 
-/**
- * Hello world!
- *
- */
+//23/02/2020
+
+//Programa que calcula el proceso para resolver la Torre de Hanoi y muestra el proceso en pantalla. 
+
 public class UI
 {
 	/**
@@ -148,7 +152,7 @@ public class UI
             torre3.fillRect(550, 200, 20, 200);
             torre3.dispose();
             
-            int x = 110;
+            int x = 97;
             int y = 380;
 
             Graphics2D disco1 = (Graphics2D) g.create();
@@ -167,33 +171,33 @@ public class UI
             disco5.setColor(Color.CYAN);
             
             if (esLaPrimeraVez) {
-                disco1.fillRect(x, 300, 50, 20);
-                disco2.fillRect(x, 320, 70, 20);
-                disco3.fillRect(x, 340, 90, 20);
-                disco4.fillRect(x, 360, 110, 20);
+                disco1.fillRect(x+40, 300, 50, 20);
+                disco2.fillRect(x+30, 320, 70, 20);
+                disco3.fillRect(x+20, 340, 90, 20);
+                disco4.fillRect(x+10, 360, 110, 20);
                 disco5.fillRect(x, 380, 130, 20);
             }
             
             // Pintar discos
             for (Varilla varilla: jugador.getMisVarillas()) {
             	if (varilla.getIdVarilla() == 0) {
-            		x = 110;
+            		x = 97;
             	} else if (varilla.getIdVarilla() == 1) {
-            		x = 310;
+            		x = 300;
             	} else if (varilla.getIdVarilla() == 2) {
-            		x = 510;
+            		x = 500;
             	}
             	y = 380;
             	for(Disco disco: varilla.getLosDiscos()) {
             		
             		if (disco.getNumeroDisco() == 0) {
-            			disco1.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            			disco1.fillRect(x+40, y, disco.obtenerLargoDelDisco(), 20);
             		}else if (disco.getNumeroDisco() == 1) {
-            			disco2.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            			disco2.fillRect(x+30, y, disco.obtenerLargoDelDisco(), 20);
             		} else if (disco.getNumeroDisco() == 2) {
-            			disco3.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            			disco3.fillRect(x+20, y, disco.obtenerLargoDelDisco(), 20);
             		} else if (disco.getNumeroDisco() == 3) {
-            			disco4.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
+            			disco4.fillRect(x+10, y, disco.obtenerLargoDelDisco(), 20);
             		} else if (disco.getNumeroDisco() == 4) {
             			disco5.fillRect(x, y, disco.obtenerLargoDelDisco(), 20);
             		} 
